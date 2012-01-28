@@ -29,6 +29,7 @@ $(call inherit-product, frameworks/base/data/sounds/GoogleAudio.mk)
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.config.ringtone=The_big_adventure.ogg \
     ro.com.android.dataroaming=true \
+endif
 
 PRODUCT_PACKAGES += \
     PhotoTable \

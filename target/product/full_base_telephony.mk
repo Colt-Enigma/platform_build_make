@@ -20,8 +20,12 @@
 # entirely appropriate to inherit from for on-device configurations.
 
 PRODUCT_PROPERTY_OVERRIDES := \
-    keyguard.no_require_sim=true \
+    keyguard.no_require_sim=true 
+
+ifeq ($(COLT_BUILD),)
+PRODUCT_PROPERTY_OVERRIDES := \
     ro.com.android.dataroaming=true
+endif
 
 PRODUCT_COPY_FILES := \
     frameworks/native/data/etc/handheld_core_hardware.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/handheld_core_hardware.xml
