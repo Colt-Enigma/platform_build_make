@@ -3059,11 +3059,13 @@ $(INTERNAL_OTA_PACKAGE_TARGET): $(BUILT_TARGET_FILES_PACKAGE) \
 
 TARGET_PACKAGE := $(PRODUCT_OUT)/COLT-$(PLATFORM_VERSION)-$(shell date +%Y%m%d)-$(TARGET_DEVICE).zip
 
-.PHONY: otapackage bacon
+.PHONY: otapackage bacon colt
 otapackage: $(INTERNAL_OTA_PACKAGE_TARGET)
 bacon: otapackage
-  $(hide) ln -f $(INTERNAL_OTA_PACKAGE_TARGET) $(TARGET_PACKAGE)
-	$(hide) $(MD5SUM) $(TARGET_PACKAGE) > $(TARGET_PACKAGE).md5sum
+bacon: colt
+colt: otapackage
+        $(hide) ln -f $(INTERNAL_OTA_PACKAGE_TARGET) $(TARGET_PACKAGE)
+        $(hide) $(MD5SUM) $(TARGET_PACKAGE) > $(TARGET_PACKAGE).md5sum
 	@echo -e ${CL_RST}""
  	@echo -e ${CL_RST}"++++++++++++++++++++++++++++++++++++++++++++++++++++++"
  	@echo -e ${CL_RST}" ▄████▄   ▒█████   ██▓  ▄▄▄█████▓    ▒█████    ██████ "
