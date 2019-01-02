@@ -33,7 +33,7 @@ echo "ro.product.name=$PRODUCT_NAME"
 echo "ro.product.device=$TARGET_DEVICE"
 
 echo "ro.colt.device=$TARGET_DEVICE"
-echo "org.colt.version=Colt-Enigma-$TARGET_DEVICE-$(date +"%Y%m%d")"
+echo "org.colt.version=Colt-Enigma-$(TARGET_DEVICE)-$(shell date +"%Y%m%d")"
 
 # These values are deprecated, use "ro.product.cpu.abilist"
 # instead (see below).
