@@ -824,19 +824,20 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
   script.Print("Target: {}".format(target_info.fingerprint))
 
   #Print ASCII
-  script.Print("+++++++++++++++++++++++++++++++++++++++++++++++++++++");
-  script.Print("+    ___              __   _       ____      ___    +");
-  script.Print("+  ,'___'.    ____    LJ  FJ_     F __ ]    F __'.  +");
-  script.Print("+  FJ---L]   F __ J   FJ J  _|   J |--| L  J (___|  +");
-  script.Print("+ J |   LJ  | |--| | J  L| |-'   | |  | |  J\___ \  +");
-  script.Print("+ | \___--. F L__J J J  LF |__-. F L__J J .--___) \ +");
-  script.Print("+ J\_____/FJ\______/FJ__L\_____/J\______/FJ\______J +");
-  script.Print("+  J_____F  J______F |__|J_____F J______F  J______F +");
-  script.Print("+                                                   +");
-  script.Print("+++++++++++++++++++++++++++++++++++++++++++++++++++++");
-  script.Print("+             by Rakesh Batra (#TeamColt)           +");
-  script.Print("+             Thanks for flashing ColtOS            +");
-  script.Print("+++++++++++++++++++++++++++++++++++++++++++++++++++++");
+  script.Print("*****************************************************");
+  script.Print("*                                                   *");
+  script.Print("*     c  c     .-.    W  W (o)__(o)  .-.     oo_    *");
+  script.Print("*     (OO)   c(O_O)c (O)(O)(__  __)c(O_O)c  /  _)-< *");
+  script.Print("*   ,'.--.) ,'.---.`,  ||    (  ) ,'.---.`, \__ `.  *");
+  script.Print("*  / //_|_\/ /|_|_|\ \ | \    )( / /|_|_|\ \   `. | *");
+  script.Print("*  | \___  | \_____/ | |  `. (  )| \_____/ |   _| | *");
+  script.Print("*  '.    ) '. `---' .`(.-.__) )/ '. `---' .`,-'   | *");
+  script.Print("*    `-.'    `-...-'   `-'   (     `-...-' (_..--'  *");
+  script.Print("*                                                   *");
+  script.Print("*****************************************************");
+  script.Print("*             by Rakesh Batra (*TeamColt)           *");
+  script.Print("*             Thanks for flashing ColtOS            *");
+  script.Print("*****************************************************");
   script.Print(" ")
   script.AppendExtra("sleep (2);")
   script.AppendExtra("ifelse(is_mounted(\"/system\"), unmount(\"/system\"));")
