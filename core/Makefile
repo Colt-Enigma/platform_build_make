@@ -3072,19 +3072,19 @@ TARGET_PACKAGE := $(PRODUCT_OUT)/$(COLT_VERSION)-$(TARGET_DEVICE).zip
  colt: otapackage
 	$(hide) ln -f $(INTERNAL_OTA_PACKAGE_TARGET) $(TARGET_PACKAGE)
 	$(hide) $(MD5SUM) $(TARGET_PACKAGE) > $(TARGET_PACKAGE).md5sum
-	@echo -e ${CL_RST}""
-	@echo -e ${CL_RST}"++++++++++++++++++++++++++++++++++++++++++++++++++++++"
-	@echo -e ${CL_RST}" ▄████▄   ▒█████   ██▓  ▄▄▄█████▓    ▒█████    ██████ "
-	@echo -e ${CL_RST}"▒██▀ ▀█  ▒██▒  ██▒▓██▒  ▓  ██▒ ▓▒   ▒██▒  ██▒▒██    ▒ "
-	@echo -e ${CL_RST}"▒▓█    ▄ ▒██░  ██▒▒██░  ▒ ▓██░ ▒░   ▒██░  ██▒░ ▓██▄   "
-	@echo -e ${CL_RST}"▒▓▓▄ ▄██▒▒██   ██░▒██░  ░ ▓██▓ ░    ▒██   ██░  ▒   ██▒"
-	@echo -e ${CL_RST}"▒ ▓███▀ ░░ ████▓▒░░██████▒▒██▒ ░    ░ ████▓▒░▒██████▒▒"
-	@echo -e ${CL_RST}"░ ░▒ ▒  ░░ ▒░▒░▒░ ░ ▒░▓  ░▒ ░░      ░ ▒░▒░▒░ ▒ ▒▓▒ ▒ ░"
-	@echo -e ${CL_RST}"  ░  ▒     ░ ▒ ▒░ ░ ░ ▒  ░  ░         ░ ▒ ▒░ ░ ░▒  ░ ░"
-	@echo -e ${CL_RST}"░        ░ ░ ░ ▒    ░ ░   ░         ░ ░ ░ ▒  ░  ░  ░  "
-	@echo -e ${CL_RST}"░ ░          ░ ░      ░  ░              ░ ░        ░  "
-	@echo -e ${CL_RST}"░                                                     "
-	@echo -e ${CL_RST} "" ${CL_RST}
+	@echo -e ${CL_RED} "" ${CL_RED}
+	@echo -e ${CL_RED}"++++++++++++++++++++++++++++++++++++++++++++++++++++++"${CL_RED}
+	@echo -e ${CL_RED}" ▄████▄   ▒█████   ██▓  ▄▄▄█████▓    ▒█████    ██████ "${CL_RED}
+	@echo -e ${CL_RED}"▒██▀ ▀█  ▒██▒  ██▒▓██▒  ▓  ██▒ ▓▒   ▒██▒  ██▒▒██    ▒ "${CL_RED}
+	@echo -e ${CL_CYN}"▒▓█    ▄ ▒██░  ██▒▒██░  ▒ ▓██░ ▒░   ▒██░  ██▒░ ▓██▄   "${CL_CYN}
+	@echo -e ${CL_CYN}"▒▓▓▄ ▄██▒▒██   ██░▒██░  ░ ▓██▓ ░    ▒██   ██░  ▒   ██▒"${CL_CYN}
+	@echo -e ${CL_YLW}"▒ ▓███▀ ░░ ████▓▒░░██████▒▒██▒ ░    ░ ████▓▒░▒██████▒▒"${CL_YLW}
+	@echo -e ${CL_YLW}"░ ░▒ ▒  ░░ ▒░▒░▒░ ░ ▒░▓  ░▒ ░░      ░ ▒░▒░▒░ ▒ ▒▓▒ ▒ ░"${CL_YLW}
+	@echo -e ${CL_RED}"  ░  ▒     ░ ▒ ▒░ ░ ░ ▒  ░  ░         ░ ▒ ▒░ ░ ░▒  ░ ░"${CL_RED}
+	@echo -e ${CL_RED}"░        ░ ░ ░ ▒    ░ ░   ░         ░ ░ ░ ▒  ░  ░  ░  "${CL_RED}
+	@echo -e ${CL_RED}"░ ░          ░ ░      ░  ░              ░ ░        ░  "${CL_RED}
+	@echo -e ${CL_RED}"░                                                     "${CL_RED}
+	@echo -e ${CL_RED} "" ${CL_RED}
 	@echo -e ${CL_BLD}${CL_RED}"==============================-Package complete-====================="${CL_RST}
 	@echo -e ${CL_BLD}${CL_YLW}"Zip: "${CL_YLW} $(TARGET_PACKAGE)${CL_RST}
 	@echo -e ${CL_BLD}${CL_YLW}"MD5: "${CL_YLW}" `cat $(TARGET_PACKAGE).md5sum | awk '{print $$1}' `"${CL_RST}
