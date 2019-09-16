@@ -891,7 +891,7 @@ endif
 ifdef BUILDING_RAMDISK_IMAGE
 BOOT_RAMDISK_COMPRESSOR := $(MINIGZIP)
 RECOVERY_RAMDISK_COMPRESSOR := $(MINIGZIP)
-LZMA := prebuilts/tools-xtended/${HOST_OS}-x86/bin/lzma
+LZMA := prebuilts/tools-lineage/${HOST_OS}-x86/bin/lzma
 ifneq ($(LZMA_RAMDISK_TARGETS),)
   ifneq (,$(findstring boot,$(LZMA_RAMDISK_TARGETS)))
     BOOT_RAMDISK_COMPRESSOR := $(LZMA) -f -c
@@ -4287,7 +4287,7 @@ name := $(TARGET_PRODUCT)
 ifeq ($(TARGET_BUILD_TYPE),debug)
   name := $(name)_debug
 endif
-name := $(name)-ota-$(FILE_NAME_TAG)
+name := ColtOS-$(TARGET_DEVICE)-ota-$(shell date +"%Y%m%d")
 
 INTERNAL_OTA_PACKAGE_TARGET := $(PRODUCT_OUT)/$(name).zip
 
