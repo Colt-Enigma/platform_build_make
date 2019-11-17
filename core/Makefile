@@ -1851,17 +1851,10 @@ $(INSTALLED_RECOVERY_BUILD_PROP_TARGET): \
 	$(hide) cat $(INSTALLED_PRODUCT_SERVICES_BUILD_PROP_TARGET) >> $@
 	$(call append-recovery-ui-properties,$(PRIVATE_RECOVERY_UI_PROPERTIES),$@)
 
-ifneq ($(TARGET_PREBUILT_RECOVERY_RAMDISK_IMG),)
-INTERNAL_RECOVERYIMAGE_ARGS := \
-    $(addprefix --second ,$(INSTALLED_2NDBOOTLOADER_TARGET)) \
-    --kernel $(recovery_kernel) \
-    --ramdisk $(TARGET_PREBUILT_RECOVERY_RAMDISK_IMG)
-else
 INTERNAL_RECOVERYIMAGE_ARGS := \
     $(addprefix --second ,$(INSTALLED_2NDBOOTLOADER_TARGET)) \
     --kernel $(recovery_kernel) \
     --ramdisk $(recovery_ramdisk)
-endif
 
 # Assumes this has already been stripped
 ifdef INTERNAL_KERNEL_CMDLINE
@@ -1941,6 +1934,10 @@ define build-recoveryramdisk
   $(hide) mkdir -p $(TARGET_RECOVERY_ROOT_OUT)/system/etc/security
   $(hide) cp $(RECOVERY_INSTALL_OTA_KEYS) $(TARGET_RECOVERY_ROOT_OUT)/system/etc/security/otacerts.zip
   $(hide) ln -sf prop.default $(TARGET_RECOVERY_ROOT_OUT)/default.prop
+$(if $(TARGET_PREBUILT_RECOVERY_RAMDISK), \
+  $(hide) rm -rf $(PRODUCT_OUT)/prebuilt_recovery
+  $(hide) mkdir -p $(PRODUCT_OUT)/prebuilt_recovery
+  $(hide) unzip -o $(TARGET_PREBUILT_RECOVERY_RAMDISK) -d $(PRODUCT_OUT)/prebuilt_recovery/)
   $(BOARD_RECOVERY_IMAGE_PREPARE)
   $(hide) $(MKBOOTFS) -d $(TARGET_OUT) $(TARGET_RECOVERY_ROOT_OUT) | $(MINIGZIP) > $(recovery_ramdisk)
 endef
@@ -2009,7 +2006,11 @@ $(INSTALLED_BOOTIMAGE_TARGET): $(MKBOOTFS) $(MKBOOTIMG) $(MINIGZIP) \
 	    $(DEPMOD)
 	$(call pretty,"Target boot image from recovery: $@")
 	$(call build-recoveryramdisk)
+ifneq ($(TARGET_PREBUILT_RECOVERY_RAMDISK),)
+	$(hide) $(MKBOOTFS) -d $(TARGET_OUT) $(PRODUCT_OUT)/prebuilt_recovery | $(RECOVERY_RAMDISK_COMPRESSOR) > $(recovery_ramdisk)
+else
 	$(hide) $(MKBOOTFS) -d $(TARGET_OUT) $(TARGET_RECOVERY_ROOT_OUT) | $(RECOVERY_RAMDISK_COMPRESSOR) > $(recovery_ramdisk)
+endif
 	$(call build-recoveryimage-target, $@)
 endif # BOARD_USES_RECOVERY_AS_BOOT
 
@@ -3893,9 +3894,6 @@ ifneq (,$(INSTALLED_RECOVERYIMAGE_TARGET)$(filter true,$(BOARD_USES_RECOVERY_AS_
 	@# Components of the recovery image
 ifneq ($(TARGET_PREBUILT_RECOVERY_RAMDISK),)
 	$(hide) mkdir -p $(zip_root)/$(PRIVATE_RECOVERY_OUT)
-	$(hide) rm -rf $(PRODUCT_OUT)/prebuilt_recovery
-	$(hide) mkdir -p $(PRODUCT_OUT)/prebuilt_recovery
-	$(hide) unzip -o $(TARGET_PREBUILT_RECOVERY_RAMDISK) -d $(PRODUCT_OUT)/prebuilt_recovery/
 	$(hide) $(call package_files-copy-root, \
 	    $(PRODUCT_OUT)/prebuilt_recovery,$(zip_root)/$(PRIVATE_RECOVERY_OUT)/RAMDISK)
 else
