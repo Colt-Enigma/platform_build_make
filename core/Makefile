@@ -4377,13 +4377,17 @@ colt: otapackage
 	@echo -e ${CL_YLW}"▐░█▄▄▄▄▄▄▄▄▄ ▐░█▄▄▄▄▄▄▄█░▌▐░█▄▄▄▄▄▄▄▄▄ ▐░▌          ▐░█▄▄▄▄▄▄▄█░▌ ▄▄▄▄▄▄▄▄▄█░▌                        ▐░▌   ▐░▌  "${CL_YLW}
 	@echo -e ${CL_YLW}"▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░▌          ▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌                       ▐░▌     ▐░▌ "${CL_YLW}
 	@echo -e ${CL_YLW}" ▀▀▀▀▀▀▀▀▀▀▀  ▀▀▀▀▀▀▀▀▀▀▀  ▀▀▀▀▀▀▀▀▀▀▀  ▀            ▀▀▀▀▀▀▀▀▀▀▀  ▀▀▀▀▀▀▀▀▀▀▀                         ▀       ▀  "${CL_YLW}
-        @echo -e ${CL_RED}"*****************************************************************************************************************"${CL_RED}
+	@echo -e ${CL_RED}"*****************************************************************************************************************"${CL_RED}
 	@echo -e ${CL_RED}"*****************************************************************************************************************"${CL_RED}
 	@echo -e ${CL_RED}"                                        Thanks for Compiling ColtOS : Enjoy :)                                   "${CL_RED}
 	@echo -e ${CL_RED}"=================================================Package Complete================================================"${CL_RED}
 	@echo -e ${CL_RED}"                                         ColtOS by Rakesh Batra :: TeamColt                                      "${CL_RED}
 	@echo -e ${CL_YLW}"*****************************************************************************************************************"${CL_RED}
 	@echo -e ${CL_RED}"                                                                                                                 "${CL_RED}
+	@echo -e ${CL_BLD}${CL_YLW}"Zip: "${CL_YLW} $(COLT_TARGET_PACKAGE)${CL_YLW}
+	@echo -e ${CL_BLD}${CL_YLW}"MD5: "${CL_YLW}" `cat $(COLT_TARGET_PACKAGE).md5sum | awk '{print $$1}' `"${CL_YLW}
+	@echo -e ${CL_BLD}${CL_YLW}"Size:"${CL_YLW}" `du -sh $(COLT_TARGET_PACKAGE) | awk '{print $$1}' `"${CL_YLW}
+	@echo -e ${CL_BLD}${CL_RED}"========================================================================================================="${CL_RED}
 
 ifeq ($(BOARD_BUILD_RETROFIT_DYNAMIC_PARTITIONS_OTA_PACKAGE),true)
 name := $(TARGET_PRODUCT)
