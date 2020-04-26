@@ -35,6 +35,9 @@ PRODUCT_ARTIFACT_PATH_REQUIREMENT_WHITELIST += \
   system/app/DeskClock/DeskClock.apk \
   system/app/DeskClock/oat/arm64/DeskClock.odex \
   system/app/DeskClock/oat/arm64/DeskClock.vdex \
+  system/app/LatinIME/LatinIME.apk \
+  system/app/LatinIME/oat/arm64/LatinIME.odex \
+  system/app/LatinIME/oat/arm64/LatinIME.vdex \
   system/app/webview/webview.apk \
   system/bin/healthd \
   system/etc/init/healthd.rc \

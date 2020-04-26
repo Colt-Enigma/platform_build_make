@@ -26,6 +26,7 @@ PRODUCT_PACKAGES += \
     Contacts \
     DeskClock \
     OneTimeInitializer \
+    LatinIME \
     Provision \
     Settings \
     SettingsIntelligence \
