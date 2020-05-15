@@ -4338,7 +4338,7 @@ $(INTERNAL_OTA_PACKAGE_TARGET): $(BUILT_TARGET_FILES_PACKAGE) \
 	@echo "Package OTA: $@"
 	$(call build-ota-package-target,$@,-k $(KEY_CERT_PAIR) --output_metadata_path $(INTERNAL_OTA_METADATA))
 
-COLT_TARGET_PACKAGE := $(PRODUCT_OUT)/$(COLT_BUILD_VERSION).zip
+COLT_TARGET_PACKAGE := $(PRODUCT_OUT)/$(COLT_VERSION).zip
 .PHONY: otapackage colt
 otapackage: $(INTERNAL_OTA_PACKAGE_TARGET)
 colt: otapackage
