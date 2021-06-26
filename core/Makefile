@@ -5076,6 +5076,7 @@ bacon: colt
 colt: otapackage
 	$(hide) ln -f $(INTERNAL_OTA_PACKAGE_TARGET) $(TARGET_PACKAGE)
 	$(hide) $(MD5) $(TARGET_PACKAGE) > $(TARGET_PACKAGE).md5sum
+	$(hide) ./vendor/colt/tools/generate_json_build_info.sh $(TARGET_PACKAGE)
 	@echo -e ${CL_RED}"                                                                                                                                  "${CL_RED}
 	@echo -e ${CL_RED}"================================================-Package completed successfully-=================================================="${CL_RED}
 	@echo -e ${CL_RED}"**********************************************************************************************************************************"${CL_RED}
